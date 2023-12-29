@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Checkpoint</title>
+  <style>
+  
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .brand-logo {
+        max-width: 55px;
+        margin-right: 10px;
+    }
+
+    .brand-name {
+        font-size: 24px; 
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .nav .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 120px;
+        z-index: 2;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .login-register-button {
+        margin-left: 20px;
+        background-color: #333;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .background-image {
+        position: relative;
+        background-size: cover;
+        width: 100%;
+        height: 90vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 1;
+        overflow: hidden;
+        border: 2px solid black;
+    }
+
+    .background-image h1, .background-image h2, .background-image #sentence {
+        font-weight: bold;
+        text-shadow: 2px 2px 4px black;
+        margin: 0;
+    }
+
+    .background-image h2 {
+        font-size: 72px;
+        color: white;
+    }
+
+    .background-image #sentence {
+        font-size: 24px;
+    }
+
+    .btn-book {
+        background-color: black;
+        color: #fff;
+        padding: 15px 30px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: 'Arial', sans-serif;
+    }
+
+    .arrow-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .arrow-buttons button {
+        background: transparent;
+        border: none;
+        font-size: 48px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .arrow-buttons button:hover {
+        color: #ccc;
+    }
+
+    .arrow-buttons .left-arrow {
+        margin-left: 20px;
+    }
+
+    .arrow-buttons .right-arrow {
+        margin-right: 20px;
+    }
+
+    .row {
+      display: flex;
+      width: 100%;
+    }
+
+    .image-section, .form-section {
+      width: 50%;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    .image-section img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-section textarea {
+      resize: vertical;
+    }
+
+    .form-section button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-section button:hover {
+      background-color: #2980b9;
+    }
+
+    .package-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .package-card {
+      width: 30%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+
+    .package-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .package-card h3 {
+      margin-top: 10px;
+    }
+
+    .package-card p {
+      margin-bottom: 10px;
+    }
+
+    .package-card button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .package-card button:hover {
+      background-color: #2980b9;
+    }
+
+    .services-section {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.service-card {
+  width: calc(30% - 20px); 
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.service-card h3 {
+  margin-top: 10px;
+}
+
+.service-card p {
+  margin-bottom: 10px;
+}
+
+    .btn-black {
+      background-color: black;
+      color: #fff;
+    }
+  
+    body.second-page {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .gallery-header {
+    text-align: center;
+    color: #fff;
+    font-size: 36px; 
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+  }
+
+  .package-gallery {
+    background-color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    margin: 0 -10px; 
+  }
+
+  .gallery-card {
+    background-color: #333;
+    width: 200px; 
+    height: 200px; 
+    margin: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 20px; 
+    transition: transform 0.5s; 
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.5); 
+  }
+  </style>
+</head>
+<body class="second-page">
+
+  <script>
+    function openRegisterPage() {
+      window.location.href = 'register.html'; // Update the path to your register.html file
+    }
+  
+    function openLoginPage() {
+      window.location.href = 'login.html'; // Update the path to your login.html file
+    }
+  </script>
+
+</body>
+<body>
+  <header>
+    <div class="brand">
+      <img class="brand-logo" src="astro.jpg" alt="Brand Logo">
+      <span class="brand-name">Astro World</span>
+    </div>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Book</a></li>
+      <li class="dropdown">
+        <a href="#">Packages</a>
+        <ul class="dropdown-content">
+          <li><a href="#">United States</a></li>
+          <li><a href="#">India</a></li>
+          <li><a href="#">France</a></li>
+          <li><a href="#">Germany</a></li>
+          <li><a href="#">Korea</a></li>
+          <li><a href="#">Egypt</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="header-right">
+
+      <button class="login-register-button" onclick="openLoginPage()">Login</button>
+
+<script>
+  function openLoginPage() {
+    window.open('login.html', '_blank');
+  }
+</script>
+      <!-- Update your "Register" button -->
+<button class="login-register-button" onclick="openRegisterPage()">Register</button>
+    </div>
+  </header>
+  <div class="background-image" id="backgroundImage">
+    <div class="arrow-buttons">
+      <button class="left-arrow" id="prevSlide">&#60;</button>
+      <button class="right-arrow" id="nextSlide">&#62;</button>
+    </div>
+    <h1>Welcome to Astro Travels</h1>
+    <h2 id="placeName">Visit Germany</h2>
+    <div id="sentence">Explore the beauty and heritage of Germany.</div>
+    <button class="btn-book">Book Now</button>
+  </div>
+
+
+  <div class="package-gallery">
+
+  </div>
+
+  <div class="services-section">
+  </div>
+
+  <script>
+    function bookNow() {
+      var whereTo = document.getElementById('whereTo').value;
+      var numberOfPersons = document.getElementById('numberOfPersons').value;
+      var startDate = document.getElementById('startDate').value;
+      var endDate = document.getElementById('endDate').value;
+      var description = document.getElementById('description').value;
+
+      if (whereTo && numberOfPersons && startDate && endDate && description) {
+        alert('Booking successful!');
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+
+    const placeNames = ["United States", "India", "France", "Germany", "Korea", "Egypt"];
+    const imageUrls = ["us.jpg", "ind.jpg", "france.jpg", "germany.jpg", "korea.jpg", "egypt.jpg"];
+    const sentences = [
+      "Explore the diverse landscapes and cultures of the United States.",
+      "Experience the rich history and traditions of India.",
+      "Indulge in the exquisite cuisine and art of France.",
+      "Discover the beauty and heritage of Germany.",
+      "Immerse yourself in the vibrant culture of Korea.",
+      "Cleopatra, Egypt's last pharaoh, lived closer to our time than to the building of the Pyramids at Giza.",
+    ];
+    let currentIndex = 0;
+    const placeNameElement = document.getElementById("placeName");
+    const backgroundImageElement = document.getElementById("backgroundImage");
+    const sentenceElement = document.getElementById("sentence");
+
+    function changeSlide(offset) {
+      currentIndex = (currentIndex + offset + placeNames.length) % placeNames.length;
+      placeNameElement.textContent = `Visit ${placeNames[currentIndex]}`;
+      backgroundImageElement.style.backgroundImage = `url('${imageUrls[currentIndex]}')`;
+      sentenceElement.textContent = sentences[currentIndex];
+    }
+
+    const prevSlideButton = document.getElementById("prevSlide");
+    const nextSlideButton = document.getElementById("nextSlide");
+    prevSlideButton.addEventListener("click", () => changeSlide(-1));
+    nextSlideButton.addEventListener("click", () => changeSlide(1));
+
+    function autoChangeSlide() {
+      changeSlide(1);
+    }
+    setInterval(autoChangeSlide, 2000);
+  </script>
+   <div class="row">
+    <div class="image-section">
+      <img src="logo.jpg" alt="Brand Image">
+    </div>
+
+    <div class="form-section" style="background-color: #333;">
+      <form id="bookingForm" style="background-color: #333;">
+        <label for="whereTo">Where to:</label>
+        <select id="whereTo" name="whereTo">
+          <option value="France">France</option>
+          <option value="United States">United States</option>
+          <option value="India"> India</option>
+          <option value="Korea">Korea</option>
+          <option value="Egypt">Egypt</option>
+          <option value="Germany">Germany</option>
+        </select>
+
+        <label for="numberOfPersons">How Many Persons:</label>
+        <input type="number" id="numberOfPersons" name="numberOfPersons" min="1">
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" min="2023-11-14">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" min="2023-11-15">
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" minlength="50" maxlength="500"></textarea>
+
+        <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+
+
+      </form>
+    </div>
+  </div>
+
+  <div class="package-gallery" style="background-color: #333;">
+<div class="package-card" style="background-color: #333;">
+  <img src="1.jpg" alt="France Image">
+  <h3>France</h3>
+  <p>Explore the breathtaking beauty of Paris with iconic landmarks and delicious cuisine.</p>
+  <p>Rating: 4.8 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+  <p>Price: $500</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+<div class="package-card" style="background-color: #333;">
+  <img src="2.jpg" alt="United States Image">
+  <h3>United States</h3>
+  <p>Jobs fill your pocket, but adventures fill your soul.</p>
+  <p>Rating: 4.5 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9734;</span></p>
+  <p>Price: $600</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+<div class="package-card" style="background-color: #333;">
+  <img src="indddd.jpg" alt="India Image">
+  <h3>India</h3>
+  <p>India, where every sunrise brings hope and every sunset brings calmness.</p>
+  <p>Rating: 4.9 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+  <p>Price: $700</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+<div class="package-card" style="background-color: #333; display: inline-block;">
+  <img src="koreaaaa.jpg" alt="Korea Image">
+  <h3>Korea</h3>
+  <p>All you need is love and kimchi.</p>
+  <p>Rating: 4.5 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9734;</span></p>
+  <p>Price: $600</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+<div class="package-card" style="background-color: #333; display: inline-block;">
+  <img src="germanyyyyyy.jpg" alt="Germany Image">
+  <h3>Germany</h3>
+  <p>Wenn man glücklich ist, soll man nicht noch glücklicher sein wollen.</p>
+  <p>Rating: 4.9 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+  <p>Price: $700</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+<div class="package-card" style="background-color: #333;">
+  <img src="egypt.jpg" alt="Egypt Image">
+  <h3>Egypt</h3>
+  <p>Explore the breathtaking beauty of Paris with iconic landmarks and delicious cuisine.</p>
+  <p>Rating: 4.8 </p><span class="stars" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+  <p>Price: $500</p>
+  <button class="btn-book" type="button" onclick="bookNow()">Book Now</button>
+</div>
+
+
+  <div style="text-align: center; background-color: #333; color: #fff; padding: 20px;">
+    <h2>Our Services</h2>
+  </div>
+
+    <div class="services-section" style="position: relative; text-align: center; background-color: #333;">
+
+  
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);"> 
+        <h3>Affordable Hotel</h3>
+        <p>Enjoy a comfortable stay without breaking the bank.</p>
+      </div>
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);"> 
+        <h3>Food & Drinks</h3>
+        <p>Savor delicious local cuisines and refreshing beverages.</p>
+      </div>
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);"> 
+        <h3>Safety Guide</h3>
+        <p>Explore worry-free with our dedicated safety guides.</p>
+      </div>
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);">
+        <h3>Adventure Tours</h3>
+        <p>Embark on thrilling adventures with our guided tours.</p>
+      </div>
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);">
+        <h3>Spa & Wellness</h3>
+        <p>Relax and rejuvenate with our spa and wellness services.</p>
+      </div>
+    
+      <div class="service-card" style="background-color: rgba(51, 51, 51, 0.7);">
+        <h3>Event Planning</h3>
+        <p>Let us help you organize memorable events and celebrations.</p>
+      </div>
+    </div>
+    
+
+</div>
+
+
+
+  <script>
+    function bookNow() {
+      var whereTo = document.getElementById('whereTo').value;
+      var numberOfPersons = document.getElementById('numberOfPersons').value;
+      var startDate = document.getElementById('startDate').value;
+      var endDate = document.getElementById('endDate').value;
+      var description = document.getElementById('description').value;
+
+      if (whereTo && numberOfPersons && startDate && endDate && description) {
+        alert('Booking successful!');
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+
+
+<div class="gallery-header">Gallery</div>
+
+<div class="package-gallery">
+  <div class="gallery-card">
+    <img src="gal1.webp" alt="Gallery Image 1">
+  </div>
+  <div class="gallery-card">
+    <img src="gal2.jpeg" alt="Gallery Image 2">
+  </div>
+  <div class="gallery-card">
+    <img src="gal3.jpeg" alt="Gallery Image 3">
+  </div>
+  <div class="gallery-card">
+    <img src="gal4.jpg" alt="Gallery Image 4">
+  </div>
+  <div class="gallery-card">
+    <img src="gal5.jpg" alt="Gallery Image 5">
+  </div>
+  <div class="gallery-card">
+    <img src="gal6.png" alt="Gallery Image 6">
+  </div>
+  <div class="gallery-card">
+    <img src="gal7.png" alt="Gallery Image 7">
+  </div>
+  <div class="gallery-card">
+    <img src="gal8.png" alt="Gallery Image 8">
+  </div>
+  <div class="gallery-card">
+    <img src="gal9.jpg" alt="Gallery Image 9">
+  </div>
+
+</div>
+
+ <div style="text-align: center; padding: 20px; background-color: #333; color: #fff;">
+  <h1>About Our Company</h1>
+</div>
+
+<div class="row" style="text-align: center;">
+  <div class="image-section" style="width: 100%;">
+    <img src="comp.jpg" alt="Company Logo" style="width: 100%;">
+  </div>
+  <div class="form-section" style="background-color: #333; color: #fff; width: 100%; box-sizing: border-box; padding: 20px;">
+    <h2>About Us</h2>
+    <p>Astro Travel is the largest independently owned travel agency headquartered in California, and consistently ranked among the top 50 largest in the United States.</p>
+    <p style="font-size: 16px;"><strong><h2>OUR MISSION STATEMENT</h2></strong><br>
+      "We are an employee-owned company with a passion for providing exemplary customer service, leveraging our expertise and technology to deliver innovative travel solutions in a gratifying work environment."
+    </p>
+    <p><strong><h2>LOCATIONS</h2></strong><br>
+      Astro Travel is headquartered in Los Angeles, California, with branch locations throughout the state, specializing in corporate travel solutions and custom vacation travel planning. Our corporate centers are located in Los Angeles, Sacramento and Irvine. Our leisure vacation travel locations include Los Angeles, Sacramento, Irvine, 
+Palos Verdes/South Bay, Pasadena and Santa Barbara/Camarillo
+.
+    </p>
+  
+  </div>
+</div>
+
+
+<footer style="background-color: #333; color: #fff; text-align: center; padding: 20px;">
+  <div>
+    <img class="brand-logo" src="astro.jpg" alt="Brand Logo">
+    <span class="brand-name">Astro Travel</span>
+  </div>
+  <div>
+    <a href="https://www.instagram.com/" style="color: #fff; margin: 0 10px; font-size: 24px;"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/" style="color: #fff; margin: 0 10px; font-size: 24px;"><i class="fab fa-facebook"></i></a>
+    <a href="https://wa.me/" style="color: #fff; margin: 0 10px; font-size: 24px;"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://twitter.com/" style="color: #fff; margin: 0 10px; font-size: 24px;"><i class="fab fa-twitter"></i></a>
+    
+  </div>
+
+  <p>&copy; 2023 Astro Travel. All Rights Reserved.</p>
+</footer>
+
+
+
+
+
+
+
+
+
